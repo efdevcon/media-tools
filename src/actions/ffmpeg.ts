@@ -1,3 +1,4 @@
+import concat from 'ffmpeg-concat'
 import ffmpeg from 'fluent-ffmpeg'
 import { Readable } from 'stream'
 import { CONFIG } from 'utils/config'
@@ -10,4 +11,15 @@ export async function ToMp3(id: string, stream: Readable, bitrate = CONFIG.BITRA
   } catch (error) {
     console.log('Unable to convert to mp3', id, error)
   }
+}
+
+export async function Concat(inputs: string[], output: string) {
+  await concat({
+    output: output,
+    videos: inputs,
+    transition: {
+      name: 'directionalwipe', // Options: fade, directionalwipe, circleopen, squareswire
+      duration: 750,
+    },
+  })
 }
