@@ -1,5 +1,6 @@
 import { ToMp3 } from 'actions/ffmpeg'
 import { GetVideoStream } from 'actions/youtube'
+import { ReadStream } from 'fs'
 import { GetSessions } from 'sources/api'
 import { CONFIG } from 'utils/config'
 
@@ -19,7 +20,7 @@ async function Run() {
     const stream = await GetVideoStream(s, 'highestaudio')
     if (!stream) return
 
-    await ToMp3(session.id, stream)
+    await ToMp3(session.id, stream as ReadStream)
     await new Promise((r) => setTimeout(r, 1000))
   })
 }

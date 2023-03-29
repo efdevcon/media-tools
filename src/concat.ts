@@ -3,7 +3,7 @@ import { join } from 'path'
 import { CONFIG } from 'utils/config'
 
 async function run() {
-  Concat([join(CONFIG.INPUT_FOLDER, 'intro.mp4'), join(CONFIG.INPUT_FOLDER, 'video.mp4')], join(CONFIG.OUTPUT_FOLDER, 'mp4', 'out.mp4'))
+  await Concat([join(CONFIG.INPUT_FOLDER, 'intro.mp4'), join(CONFIG.INPUT_FOLDER, 'rekt.mp4')], join(CONFIG.OUTPUT_FOLDER, 'mp4', 'porto-out.mp4'))
 }
 
 run()
